@@ -1,0 +1,188 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<ngx-spinner name="spinner1" class="myspiner" bdColor="rgba(51,51,51,0.8)" size="default" color="rgb(0, 172, 193)"
+    type="ball-spin-clockwise">
+</ngx-spinner>
+
+<div class="myw-navbar phx-font-family">
+    <div class="myw-inner myw-container d-flex flex-wrap myw-navbar-wrap">
+        <div class="d-flex flex-nowrap justify-content-end myw-navbar-actions">
+            <div class="dropdown dropright dropflat phx-cursor d-flex">
+                <a class="myw-navbar-action">
+                    <img class="createtaskicon" (click)="openPopup()"
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojMDgwODA4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MnB4O308L3N0eWxlPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNi41IC02LjUpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTE4LDcuNXYxNiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNSkiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTcuNSwxOGgxNiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMi41KSIvPjwvZz48L3N2Zz4="
+                        draggable="false" />
+                    <span>
+                        Create New Task
+                    </span>
+                </a>
+            </div>
+            <div class="dropdown dropright dropflat d-flex phx-cursor">
+                <a class="myw-navbar-action" (click)="openAssignTaskPopUp()">
+                    <img class="assign-icon"
+                        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy41MDEiIGhlaWdodD0iMTcuNSIgdmlld0JveD0iMCAwIDE3LjUwMSAxNy41Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO30uYSwuYntzdHJva2U6IzA4MDgwODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjEuNXB4O30uYntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NjYuMjUgLTEzMTkuMjUpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTUuODMzLDQuNWg5LjMzNEExLjQ0NSwxLjQ0NSwwLDAsMSwxNi41LDYuMDM2djEwLjc1YTEuNDQ1LDEuNDQ1LDAsMCwxLTEuMzMzLDEuNTM2SDUuODMzQTEuNDQ1LDEuNDQ1LDAsMCwxLDQuNSwxNi43ODZWNi4wMzZBMS40NDUsMS40NDUsMCwwLDEsNS44MzMsNC41WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDY2LjUgMTMxNy42NzkpIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik01Ljk4OCw0LjVIMTYuNGExLjUsMS41LDAsMCwxLDEuNDg4LDEuNTE4VjE2LjY0NEExLjUsMS41LDAsMCwxLDE2LjQsMTguMTYySDUuOTg4QTEuNSwxLjUsMCwwLDEsNC41LDE2LjY0NFY2LjAxOEExLjUsMS41LDAsMCwxLDUuOTg4LDQuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ2Mi41IDEzMTUuNSkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTQuNSwxMy41aDUuNzU5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NjYuNSAxMzExLjIwOCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTQuNSwxMy41aDYuOTQyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NjUuNSAxMzE1LjU1NSkiLz48L2c+PC9zdmc+" alt="Bulk Update" draggable="false">
+                    <span>Assign Task</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="phx-right-slide-modal modal fade" id="createnewTaskModal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content myw-container px-0">
+            <div class="modal-body pb-3">
+                <form [formGroup]="createnewTaskForm" class="phx-formfix" (ngSubmit)="createTask()">
+                    <button class="close phx-btnClose px-3" data-dismiss="modal" type="button">×</button>
+                    <div class="phx-si-deliverpane-body">
+                        <div class="row phx-mrgleft">
+                            <div class="form-group mb-5 col-12 col-md-12 px-1">
+                                <label class="required phx-titlefix phx-form-color" for="Message">Message</label>
+                                <div>
+                                    <input type="text" name="message" formControlName="message"
+                                        class="form-control phx-title"
+                                        [ngClass]="(createnewTaskForm.value?.Message?.length == 0 || ( (Message.dirty || Message.touched) && Message.invalid && Message.errors.pattern))? 'phx-title-danger-border' : 'phx-title-border'"
+                                        placeholder="" title="{{createnewTaskForm.value.message}}"
+                                        maxlength="{{taskservice.MessageMaxLength}}" required>
+                                </div>
+                                <span *ngIf="!createnewTaskForm.value?.message" class="phx-modal-error">Message is
+                                    required</span>
+                            </div>
+                        </div>
+                        <div class="row phx-mrgleft">
+                            <div class="form-group mb-5 col-12">
+                                <label for="" class="phx-form-color">
+                                    Due_Date
+                                </label>
+                                <div>
+                                    <input type="text" name="due_date" formControlName="due_date" class="form-control phx-duedate"
+                                        title="{{createnewTaskForm.value.due_date}}" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row phx-mrgleft">
+                            <div class="form-group mb-5 col-4 col-md-4 col-lg-3">
+                                <label for="" class="phx-form-color">
+                                    Priority
+                                </label>
+                                <div>
+                                    <input type="number" name="priority"
+                                         onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                                        formControlName="priority" min="1" max="3"
+                                        title="{{createnewTaskForm.value.priority}}"
+                                        class="form-control phx-border pl-0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row phx-mrgleft">
+                            <div class="form-group mb-5 col-4 col-md-4 col-lg-3">
+                                <label for="" class="phx-form-color">
+                                    Assigned_To
+                                </label>
+                                <div>
+                                    <input type="number" name="assigned_to"
+                                         onkeydown="javascript: return event.keyCode == 69 ? false : true"
+                                        formControlName="assigned_to" min="1"
+                                        title="{{createnewTaskForm.value.assigned_to}}"
+                                        class="form-control phx-border pl-0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <input type="submit" class="btn ml-auto btn-primary" value="Create"
+                                [disabled]="checkMandatoryVal()">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- modal-content -->
+    </div>
+    <!-- modal-dialog -->
+</div>
+
+<div class="modal" id="assignTaskModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog phx-modal-assignTask modal-dialog-centered">
+        <form>
+            <div class="phx-modal-content phx-modal-position">
+                <div class="modal-header phx-header-align myW-bg-clr">
+                    <h5 class="modal-title assign-task-title">Assign Task</h5>
+                    <button aria-label="Close" class="rc-close rc-panel-close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true" class="sr-only">Close</span>
+                    </button>
+                </div>
+                <div class="modal-body phx-modal-body">
+                    <div class="phx-detailView-body">
+                        <div class="row">
+                            <div class="form-group col-12 col-md-12">
+                                <label class="myW-clr">Task ID</label>
+                                <div class="phx-dropdown dropdown">
+                                    <div class="phx-form-control form-control phx-dropdown-toggle
+                                        dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                         aria-expanded="false" id="Methodology">
+                                        {{selectedTaskId?selectedTaskId:'Select'}}
+                                    </div>
+                                    <div class="phx-dropdown-menu dropdown-menu" aria-labelledby="Methodology">
+                                        <div class="phx-drop-item" *ngFor="let id of taskservice.getTaskIds">
+                                            <a class="phx-drop-item-header" (click)="selectTaskId(id)">{{id}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-md-12">
+                                <label class="myW-clr">User Name</label>
+                                <div class="phx-dropdown dropdown">
+                                    <div class="phx-form-control form-control phx-dropdown-toggle
+                                        dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true"
+                                         aria-expanded="false" id="Methodology">
+                                        {{selectedUser?selectedUser:'Select'}}
+                                    </div>
+                                    <div class="phx-dropdown-menu dropdown-menu" aria-labelledby="Methodology">
+                                        <div class="phx-drop-item" *ngFor="let user of users">
+                                            <a class="phx-drop-item-header" (click)="selectUser(user.name,user.id)">{{user.name}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer phx-modal-footer">
+                    <div class="row mb-20">
+                        <div class="">
+                            <input type="button" class="btn btn-secondary mr-2"
+                                data-dismiss="modal" value="Cancel">
+                            <input type="button" class="btn btn-primary"
+                                data-dismiss="modal" value="Assign" (click)="assignTaskToUser()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="alert phx-alert-success alert-dismissible fade show" role="alert" *ngIf="successMessage">
+    <div >
+        {{AlertMessage}} 
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toasterClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="alert phx-alert-danger alert-dismissible fade show" role="alert"  *ngIf="failureMessage">
+    <div >
+         {{AlertMessage}} 
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toasterClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

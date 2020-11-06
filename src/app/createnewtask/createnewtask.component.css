@@ -1,0 +1,399 @@
+.modal-header {
+    border-bottom: none !important;
+    padding: 1rem;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 0rem 1rem;
+}
+
+.phx-formfix {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.26);
+    background-color: #fff;
+}
+
+.phx-si-deliverpane-body {
+    padding: 1.5rem;
+}
+
+.phx-titlefix {
+    position: relative;
+}
+
+.phx-title {
+    padding: .375rem 0;
+    border-radius: 0;
+    width: 100%;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.phx-title-danger-border {
+    border-bottom: 1px solid #DB0020 !important;
+}
+
+.phx-title-border:focus {
+    border-bottom: 1px solid #004cff !important;
+}
+
+.phx-border {
+    border-color: #707070 !important;
+    border-radius: 0;
+    border-width: 0 0 1px;
+}
+
+#createnewTaskModal {
+    pointer-events: none;
+    padding-right: 0px !important;
+}
+
+.myw-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.myw-navbar-actions .myw-navbar-action {
+    min-width: 2.5rem;
+    padding: 5px .25rem;
+    color: inherit;
+    text-decoration: none;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.myw-navbar-action img {
+    max-height: 1rem;
+    width: auto;
+}
+
+.myw-navbar-action>span {
+    display: block;
+    text-align: center;
+    font-size: .875rem;
+    font-weight: 500;
+    margin: 2px 0 0;
+    line-height: 1;
+}
+
+.myw-navbar-active .myw-navbar-action {
+    padding: 0 .5rem;
+}
+
+.myw-navbar-action:hover, .myw-navbar-action:focus {
+    text-decoration: none;
+    outline: 0;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.myw-navbar {
+    background-color: #fff;
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, .2);
+    position: sticky;
+    top: 2.5rem;
+    width: 100%;
+    z-index: 999;
+    height: 2.5rem;
+}
+
+.phx-font-family {
+    font-family: Graphik;
+}
+
+.myw-actions>*:not(:last-child) {
+    margin-right: 20px;
+}
+
+.phx-btnClose {
+    opacity: 1 !important;
+    text-shadow: none;
+    padding-top: 10px;
+    outline: 0!important;
+}
+
+.phx-modal-error {
+    color: #DB0020;
+}
+
+.myspiner /deep/ .black-overlay {
+    position: fixed;
+}
+
+.phx-duedate {
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+}
+
+.phx-duedate:focus {
+    border-bottom: 1px solid #004cff !important;
+}
+
+.myw-navbar-action.disabled {
+    cursor: not-allowed;
+}
+
+.modal-backdrop {
+    opacity: 1 !important;
+    background-color:rgba(0, 0, 0, 0.4);
+}
+
+.phx-modal-assignTask {
+    z-index: 999;
+    max-width: 500px !important;
+}
+
+.phx-modal-content {
+    border-radius: 1rem;
+    background-color: #ffffff;
+    width: auto;
+    min-width: 500px !important;
+}
+
+.phx-modal-position {
+    border: none;
+    pointer-events: auto !important
+}
+
+.phx-header-align {
+    padding: 0 2.5rem 0 1rem !important;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.myW-bg-clr {
+    background-color: #008;
+}
+
+.assign-task-title {
+    color: #fff !important;
+    line-height: 50px;
+    text-align: left;
+    letter-spacing: 0.08px;
+    opacity: 1;
+    font-family: 'Graphik';
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.phx-modal-body {
+    padding: 1rem;
+    border-top: 0.0625rem solid #bfbfbf;
+    background-color: #bfbfbf;
+    flex: none;
+}
+
+.phx-detailView-body .phx-form-control {
+    border-bottom: 0.0625rem solid #e0e3ed;
+    border-right: 0;
+    border-top: 0;
+    border-left: 0;
+    border-radius: 0;
+    color: #000;
+    padding-left: 0;
+    box-shadow: none;
+}
+
+.phx-detailView-body label {
+    letter-spacing: 0px;
+    color: #000000;
+    opacity: 1;
+    font-size: 14px;
+    font-family: 'Graphik';
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.phx-detailView-body .phx-dropdown-menu {
+    border: 0.0625rem solid #dddddd;
+    width: 100%;
+    min-width: 100%;
+    margin-top: 0;
+    background: #fff;
+}
+
+.phx-detailView-body .phx-dropdown-menu:before {
+    display: none;
+}
+
+.myW-clr {
+    color: #000000;
+}
+
+.phx-dropdown-toggle::after {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+    position: absolute;
+    right: 8px;
+    top: 12px;
+}
+
+.phx-dropdown-item {
+    color: inherit;
+    white-space: normal;
+}
+
+.phx-dropdown-item+.phx-dropdown-item {
+    border-top: 0.0625rem solid #e4e4e4;
+}
+
+.phx-dropdown-item:focus,
+.phx-dropdown-item:hover {
+    color: #262626;
+    background-color: #e4e4e4;
+}
+
+.phx-dropdown-item.active,
+.phx-dropdown-item:active {
+    color: #262626;
+    background-color: #ebebeb;
+}
+
+.phx-dropdown-menu {
+    padding: 0;
+    margin: 0.65rem 0 0;
+    max-width: 100%;
+    width: 100%;
+    font-size: 0.875rem;
+    color: #262626;
+    top: 100% !important;
+    left: 0 !important;
+    border-width: 0.0625rem;
+    border-color: #dddddd;
+    background-color: #fff;
+    -webkit-border-radius: 0.0625rem;
+    border-radius: 0.0625rem;
+    -webkit-box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.12);
+    -webkit-transform: translate3d(0rem, 0rem, 0rem) !important;
+    transform: translate3d(0rem, 0rem, 0rem) !important;
+    margin-top: 0;
+    overflow-y: scroll;
+    max-height: 140px;
+}
+
+.phx-dropdown-menu-right {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.phx-dropdown-menu:before {
+    content: '';
+    display: none;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: -1.3rem;
+    border: 0.6rem solid transparent;
+    border-bottom-color: #0f707d;
+}
+
+.phx-dropdown-menu .phx-drop-item a:hover {
+    font-weight: normal !important;
+    opacity: 100%;
+    background: #D9EEFF;
+}
+
+.phx-dropdown-menu .phx-drop-item a:first-child {
+    border-top: 0;
+}
+
+.phx-dropdown-menu {
+    font-size: 13px;
+    color: #4D4F5C;
+    border-color: #E9E9F0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px #0000000D;
+}
+.phx-dropdown-menu .phx-drop-item a {
+    padding: 0.5rem;
+    background: #ffffff;
+    border-top: none !important;
+    display: block;
+    text-decoration: none;
+    color: #4D4F5C;
+    font-size: 12px;
+    line-height: 20px;
+    font-family: 'Graphik';
+    word-break: break-all;
+}
+
+.phx-modal-footer {
+    padding: 0 1rem 0.5rem !important;
+    border-top: 0rem !important;
+    background-color: #bfbfbf;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    border-top: 1px solid #000 !important;
+}
+
+.phx-alert-success {
+    top: 41px;
+    position: absolute;
+    left: 58rem;
+    color: #fff;
+    z-index: 9999;
+    min-width: 18rem;
+    width: 347px;
+    min-height: 45px;
+    background: #009654 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    font: normal normal 600 11px/16px Graphik;
+    border-radius: 0 !important;
+}
+
+.phx-alert-danger {
+    bottom: 41px;
+    position: absolute;
+    left: 58rem;
+    color: #fff;
+    z-index: 9999;
+    min-width: 18rem;
+    width: 430px;
+    min-height: 45px;
+    background: #DB0020 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    font: normal normal 600 11px/16px Graphik;
+    border-radius: 0 !important;
+}
+
+.phx-alert-success button.close span, .phx-alert-danger button.close span {
+    color: #ffffff;
+    font-size: 21px;
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    font-weight: 400;
+    text-shadow: 0 0px 0 #ffffff;
+}
+
+.phx-alert-success button.close, .phx-alert-danger button.close {
+    opacity: 1 !important;
+    outline: none !important;
+}
+
+.phx-alert-success span:focus, .phx-alert-danger span:focus {
+    outline: none !important;
+}

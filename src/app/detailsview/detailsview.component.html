@@ -1,0 +1,192 @@
+<ngx-spinner name="spinner1" class="myspiner" bdColor="rgba(51,51,51,0.8)" size="default" color="rgb(0, 172, 193)"
+    type="ball-spin-clockwise">
+</ngx-spinner>
+
+<div class="modal edit-modal" #content id="content" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content myw-container">
+            <div class="modal-header phx-headerFix px-0">
+                <div class="myw-back">
+                    <a (click)="onClosePopUp()" class="mr-2 text-decoration-none">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNS4wOTMiIHZpZXdCb3g9IjAgMCAxNiAxNS4wOTMiPjxwYXRoIGQ9Ik0yMC4yMzgsMTIuNDIxaC05LjczbDMuNzc0LTMuNjFhMS41LDEuNSwwLDAsMCwwLTIuMDU1LDEuMzQ1LDEuMzQ1LDAsMCwwLTEuOTY0LDBMNi4wMzQsMTIuODQ5YTEuMzg1LDEuMzg1LDAsMCwwLS40MDksMS4wMTh2LjAxOEExLjM4NSwxLjM4NSwwLDAsMCw2LjAzNCwxNC45TDEyLjMxMywyMWExLjM0NSwxLjM0NSwwLDAsMCwxLjk2NCwwLDEuNSwxLjUsMCwwLDAsMC0yLjA1NUwxMC41LDE1LjMzMWg5LjczYTEuNDIzLDEuNDIzLDAsMCwwLDEuMzkxLTEuNDU1QTEuNDA4LDEuNDA4LDAsMCwwLDIwLjIzOCwxMi40MjFaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNS42MjUgLTYuMzMpIi8+PC9zdmc+" draggable="false" alt="Back" title="Back">
+                    </a>
+                    <span class="myw-700">Edit Task ID : {{filteredObject.id}}</span>
+                </div>
+            </div>
+            <div class="modal-body phx-bodyFix p-0 pb-3">
+                <form name="EditForm" class="phx-formfix p-4" #EditForm="ngForm" novalidate>
+                    <div class="row ">
+                        <div class="form-group col-12 col-md-12">
+                            <label class="required phx-messagefix phx-form-color" for="">Message</label>
+                            <input class="form-control phx-edit-message phx-message"  [ngModelOptions]="{standalone: true}" [(ngModel)]="filteredObject.message"
+                             #message="ngModel" placeholder="" required type="text" name="Message" tabindex="0" />
+
+                            <span
+                                *ngIf="(message.dirty || message.touched || message.untouched) && message.invalid && message.errors.required"
+                                class="phx-modal-error">
+                                Message is required
+                            </span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 col-md-12 phx-widthFix">
+                            <label class="phx-form-color" for="">Due_Date</label>
+                                <input class="phx-txtarea phx-edit-title pl-0" [(ngModel)]="filteredObject.due_date" [ngModelOptions]="{standalone: true}"
+                                #due_date="ngModel" placeholder="" type="text" name="DueDate" tabindex="0" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12 col-md-12">
+                            <label class="phx-form-color" for="">Priority</label>
+                            <input class="form-control phx-border phx-edit-title pl-0" [ngModelOptions]="{standalone: true}" [(ngModel)]="filteredObject.priority"
+                            #priority="ngModel" placeholder="" type="text" name="Priority" tabindex="0" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-4 col-md-4 col-lg-3">
+                            <label class="phx-form-color" for="">Assigned_To</label>
+                            <div>
+                              <input class="form-control phx-border pl-0" [ngModelOptions]="{standalone: true}" [(ngModel)]="filteredObject.assigned_to"
+                              #assigned_to="ngModel"  placeholder="" type="text" name="AssignedTo" tabindex="0" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="myw-actions d-flex align-items-center mt-3">
+                        <input type="button" class="btn btn-primary ml-2" value="Update Task" [disabled]="checkMandatoryVal() || EditForm.invalid" (click)="updateTask()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="align-items-center">
+    <div class="col-md-1" *ngIf="disableDelete==false"
+    [ngStyle]="{'color':(disableEdit == true)?'gray':'black','cursor':(disableEdit == true)?'not-allowed':'pointer'}"
+    (click)="onDeleteData()">
+        <p class="my-2 phx-delete-icon">
+            <i class="fa fa-trash-o"></i>
+            <span class="ml-2">Delete</span>
+        </p>
+    </div>
+</div>
+
+<div class="row" class="m-0 phx-tablePostion">
+    <div class="col-md-12 p-0 myw-section my-3">
+        <form #myForm="ngForm">
+            <div class="table-responsive phx-table">
+                <table class="table table-hover table-striped table-vmiddle myw-table">
+                    <thead>
+                        <tr class="phx-tableHead">
+                            <th style="width: 1.4%;">
+                                <div class="phx-check-square" id="divChkSelectAll">
+                                    <input type="checkbox" value="bulk" id="selectAll" class="checkbox" />
+                                    <label for="selectAll"></label>
+                                </div>
+                            </th>
+                            <th sortable="Id" style="width: 4%;;font-weight: bold;"
+                                (click)="onSort('TaskId')">
+                                <div title="ID" class="table-sort" id="TaskId">
+                                    ID
+                                </div>
+                            </th>
+                            <th style="width: 5.5%;font-weight: bold;"
+                              (click)="onSort('Message')">
+                                <div title="Message" class="table-sort" id="Message">
+                                    Message
+                                </div>
+                            </th>
+                            <th style="width: 2%;"></th>
+                            <th style="width: 5%;font-weight: bold;"
+                              (click)="onSort('DueDate')">
+                                <div title="DueDate" class="table-sort" id="DueDate">
+                                    DueDate
+                                </div>
+                            </th>
+                            <th style="width: 5%;font-weight: bold;"
+                              (click)="onSort('Priority')">
+                                <div title="Priority" class="table-sort" id="Priority">
+                                    Priority
+                                </div>
+                            </th>
+                            <th style="width: 5%;font-weight: bold;"
+                              (click)="onSort('AssignedTo')">
+                                <div title="AssignedTo" class="table-sort" id="AssignedTo">
+                                    AssignedTo
+                                </div>
+                            </th>
+                            <th style="width: 5%;font-weight: bold;"
+                              (click)="onSort('AssignedName')">
+                                <div title="AssignedName" class="table-sort" id="AssignedName">
+                                    AssignedName
+                                </div>
+                            </th>
+                        </tr>                       
+                    </thead>
+
+                    <tbody class="phx-tableBody">
+                        <tr *ngFor="let rowData of totalDataFilteredCopy | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
+                            <td class="px-4" *ngIf="disableDelete==false">
+                                <div class="phx-check-square">
+                                    <input type="checkbox" name='check' (click)="onClickRowCheckbox($event,rowData)">
+                                </div>
+                            </td>
+                            <td>{{rowData.id}}</td>
+                            <td>{{rowData.message}}</td>
+                            <td>
+                                <img class="edit-icon" (click)="openPopup(rowData)" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNS45OTgiIGhlaWdodD0iMTYuMDA2IiB2aWV3Qm94PSIwIDAgMTUuOTk4IDE2LjAwNiI+PHBhdGggZD0iTTI2MC45MzgsNGEuNjA2LjYwNiwwLDAsMC0uMzU3LjE3NWwtMTAuNCwxMC40YS42MTcuNjE3LDAsMCwwLS4xNjMuMjg4bC0xLDQuNGEuNi42LDAsMCwwLC43MTkuNzE5bDQuNC0xYS42LjYsMCwwLDAsLjI5My0uMTYzbDEwLjQwNS0xMC40YS42MjUuNjI1LDAsMCwwLDAtLjg0NGwtMy40LTMuNEEuNjA5LjYwOSwwLDAsMCwyNjAuOTM4LDRabS4wNjgsMS40NDQsMi41NTIsMi41NTctMS4xNTEsMS4xNUwyNTkuODU2LDYuNlptLTIsMiwyLjU1MiwyLjU1N0wyNTQuMiwxNy4zNTlsLTIuNTUyLTIuNTUxWm0tNy45ODQsOC40MjIsMi4xMiwyLjEyLTIuNzM4LjYxOVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yNDkgLTQpIi8+PC9zdmc+" alt="">
+                            </td>
+                            <td>{{rowData.due_date}}</td>
+                            <td>{{rowData.priority}}</td>
+                            <td>{{rowData.assigned_to}}</td>
+                            <td>{{rowData.assigned_name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="d-flex justify-content-end my-4 phx-pagination">
+    <ngb-pagination [collectionSize]="datalength" [(page)]="page" [pageSize]="pageSize">
+    </ngb-pagination>
+
+    <div class="phx-row-count dropdown">
+                <div class="form-control dropdown-toggle phx-rowcount-drpdwn" id="pageRecords" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span class="dropdownSelectText" *ngIf="pageSize == datalength">All</span>
+                    <span class="dropdownSelectText" *ngIf="pageSize != datalength">{{selectedFieldForShowRecords}} /
+                        page</span>
+                </div>
+
+                <div class="dropdown-menu phx-rowcount-menu" aria-labelledby="pageRecords">
+                    <div class="phx-drop-item count-selector-drop" *ngFor="let optionvalue of selectPage">
+                        <a class="phx-drop-item-header"
+                            (click)="selectRecordToShow(optionvalue)" title="{{optionvalue.Text}}">{{optionvalue.Text}}
+                            <span *ngIf="optionvalue.Text != 'All'">/ page</span>
+                        </a>
+                    </div>
+                </div>
+    </div>
+</div>
+            
+
+<div class="alert phx-alert-success alert-dismissible fade show" role="alert" *ngIf="successMessage">
+    <div >
+        {{AlertMessage}} 
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toasterClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="alert phx-alert-danger alert-dismissible fade show" role="alert"  *ngIf="failureMessage">
+    <div >
+         {{AlertMessage}} 
+    </div>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="toasterClose()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>

@@ -1,1 +1,281 @@
 /* You can add global styles to this file, and also import other style files */
+
+.c-topbar__inner {
+    background: url(src\app\images\bg-topbar.png) no-repeat -4.75rem center transparent;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.c-topbar__title {
+    margin: 6px 3rem;
+    color: #fff!important;
+    width: unset!important;
+    padding: 0;
+    font-size: 1.125rem;
+    font-family: 'Graphik';
+}
+
+a {
+    background-color: transparent;
+}
+
+ul {
+    margin-top: 0;
+}
+
+.body-height {
+    min-height: 97vh !important;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+body {
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff !important;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.phx-cursor {
+    cursor: pointer;
+}
+
+.dropdown .dropright {
+    position: relative;
+}
+
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap !important;
+}
+
+.phx-form-color {
+    text-align: left;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #004DFF;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    font-family: Graphik;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    border-color: none !important;
+}
+
+.form-control {
+    border: 1px solid #6a7070;
+    font: normal normal normal 14px/18px Graphik;
+    color: #252525 !important;
+}
+
+form.phx-formfix .ng-invalid, form.phx-formfix .form-control.ng-invalid:focus {
+    border-bottom: 1px solid #DB0020;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #fff !important;
+    cursor: not-allowed !important;
+}
+
+.btn {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: .875rem;
+    font-weight: 500;
+    color: #000;
+    min-width: 6rem;
+    padding: .375rem 1.25rem;
+    border-radius: 50rem !important;
+    position: relative;
+    width: 1.125rem;
+}
+
+.btn, .btn:hover, .btn:focus {
+    text-decoration: none;
+}
+
+.btn:hover, .btn.focus, .btn:focus {
+    box-shadow: 0 0 .25rem .125rem rgba(0, 0, 0, .1);
+    color: #2800ff;
+}
+
+.btn:disabled {
+    background-color: #b2b2b2 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-color: #b2b2b2 !important;
+    color: #585858 !important;
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: var(--button);
+    background-image: linear-gradient(90deg, #004DFF, #00BAFF);
+    border-color: transparent;
+    color: #fff;
+    border: 0;
+}
+
+.btn-primary:hover, .btn-primary.focus, .btn-primary:focus {
+    background-color: #2800ff;
+    background-image: linear-gradient(90deg, #004DFF, #00BAFF);
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #2800ff;
+    background-image: linear-gradient(90deg, #004DFF, #00BAFF);
+    border-color: transparent;
+    color: #fff;
+}
+
+.phx-right-slide-modal .modal-header {
+    margin: 0 1.5rem;
+    padding: 1rem 0;
+}
+
+.phx-right-slide-modal .modal-body {
+    padding: 1rem 1.5rem;
+}
+
+.phx-right-slide-modal.modal .modal-dialog {
+    position: static !important;
+    border-radius: 0;
+    max-width: 100% !important;
+}
+
+.phx-right-slide-modal.modal .modal-content {
+    height: 100% !important;
+    overflow-y: auto !important;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+    top: 0 !important
+}
+
+.phx-right-slide-modal.modal {
+    position: relative;
+    top: -40px;
+    z-index: 1042;
+}
+
+.modal-backdrop.show {
+    opacity: 0 !important;
+}
+
+.modal-backdrop.fade {
+    opacity: 0 !important;
+}
+
+.align-items-center {
+    align-items: center!important;
+}
+
+.btn-secondary {
+    box-shadow: none;
+    padding: 0.3rem 1.3rem;
+    box-shadow: 0rem 0rem 0.125rem 0rem #999999;
+    border-radius: 0rem;
+}
+
+.btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus {
+    background-color: #fff;
+    border-color: #004DFF;
+    color: #080808;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #004DFF;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active {
+    background-color: #fff;
+    border-color: #004dff;
+    color: #080808;
+}
+
+.rc-close { 
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    border: 0;
+    background: transparent;
+    display: inline-block;
+    position: relative;
+    left: 25px;
+    top: 13px;
+    outline: none !important;
+    color: #fff;
+}
+.rc-close:after, .rc-close:before{ 
+    content: '';
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: currentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -1px 0 0 -0.5rem;
+    transform: rotate(45deg);
+    opacity: 1;
+ }
+.rc-close:after { 
+    transform: rotate(-45deg); 
+}
+.rc-close:hover:before, .rc-close:hover:after { 
+    background-color: #fff; 
+}
+
+.btn-secondary { 
+    background-color: #fff; 
+    border-color: #004DFF; 
+    color: #080808; 
+    background: #FFFFFF 0% 0% no-repeat padding-box; 
+    border: 2px solid #004DFF;
+}
+.btn-secondary:hover, .btn-secondary.focus, .btn-secondary:focus { 
+    background-color: #fff; 
+    border-color: #004DFF; 
+    color: #080808; 
+    background: #FFFFFF 0% 0% no-repeat padding-box; 
+    border: 2px solid #004DFF;
+}
+.btn-secondary:not(:disabled):not(.disabled).active, 
+.btn-secondary:not(:disabled):not(.disabled):active { 
+    background-color: #fff; 
+    border-color: #004dff; 
+    color: #080808; 
+}

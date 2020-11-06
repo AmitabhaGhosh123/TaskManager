@@ -1,0 +1,78 @@
+.myw-topbar .myw-container {
+    height: 2.5rem;
+}
+
+.myw-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+@media (max-width: 1280px) {
+    .myw-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+.myw-topbar {
+    background-color: #008;
+    background: linear-gradient(90deg, #008 0%, #008 100%);
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1043;
+}
+
+.nav-tabs {
+    border-color: #ccc;
+}
+
+.phx-tabs {
+    border-bottom: none;
+}
+
+.phx-tabs li {
+    position: relative;
+    padding-left: 0;
+    padding-top: 0px;
+}
+
+.phx-tabs li:hover {
+    border-color: transparent;
+}
+
+.phx-tabs li:hover a {
+    border-bottom: 1px solid #fff;
+}
+
+.phx-tabs li.active {
+    background: transparent;
+    border-color: transparent;
+    padding-top: 8px;
+}
+
+.phx-tabs li:not(:last-child):after {
+    content: '';
+    background-color: #fff;
+    height: 1.5rem;
+    width: 2px;
+    position: absolute;
+    top: 10px;
+    right: 2px;
+}
+
+.phx-mrTop {
+    margin-top: -7px;
+}
+
+.phx-undeline {
+    text-decoration: none !important;
+}
+
+.phx-reqMargin {
+    margin-left: 0px;
+}
+
+.cursor_point {
+    cursor: pointer;
+}
