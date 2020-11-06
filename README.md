@@ -1,27 +1,38 @@
-# Taskmanager
+Instructions on how to run app locally.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+1. Download the project , unzip the file and open in visual studio code or any other editor.
+2. Run npm install for installing the required dependencies.
+3. Compile using command npm start or ng serve.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Flow of application.
 
-## Code scaffolding
+On hitting the app URL, user will be redirected to homepage screen.
+There we have two options : one link for create new task and other one for assign task.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Creation and view of tasks:
 
-## Build
+For creating task to user, user has to click the plus icon next to label "Create Task" . On clicking the icon, create new task form will open where user 
+has to fill the required fields and click on "Create Task" button.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Note : In the create form , the "Message" field is mandatory. Other fields are optional.
 
-## Running unit tests
+After creation of task , user will get a confirmation message on the right corner indicating the task has been created successfully.
+Also , user will be able to see the details of task created in a table.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Update tasks:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+In the table below , an edit icon will appear where user need to click in order to update task.
+On clicking edit icon , edit form where user can update any field and click on update button. Once user clicks on update button , a confirmation message will appear that the task is updated successfully.
 
-## Further help
+Delete Task:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+User has to click the checkbox available on each row of table and click on delete icon on the top left corner of table.
+Note: Initially , delete will be disabled. Once any one checkbox is selected , the delete icon will be enabled.
+
+Assign Task to User:
+
+User has to click on Assign Task icon on top of page . On clicking icon , one popup will appear where user will be given the option to select task id and user name in dropdowns. User can select the same and click on assign button. On button click, the selected task id will be assigned to the selected user and the same will be shown on table.
+
+In table, for each page only 5 records will show. In case of more records, user has the option to use table pagination on bottom of the table. Also , next to pagination , user can select how many records he/she wants to see per page.
