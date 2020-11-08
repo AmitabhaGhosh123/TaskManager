@@ -91,7 +91,7 @@ export class CreatenewtaskComponent implements OnInit {
         }, 7000);
         $('#createnewTaskModal').modal('hide');
         this.spinner.hide('spinner1');
-        this.callClickEvent('openDetailsView');
+        this.callClickEvent('openDetailsView','');
       }
     },
       (error) => {
@@ -124,8 +124,25 @@ export class CreatenewtaskComponent implements OnInit {
  * @returns {void}
  */
 
-  callClickEvent(type) {
-    this.taskservice.callForClickEvent(type);
+  callClickEvent(type,value) {
+    if(type == 'search')
+    {
+      let searchEvent = {};
+      searchEvent['name'] = 'search';
+      searchEvent['event'] = value;
+      this.taskservice.callForClickEvent(searchEvent);
+    }
+    else
+    {
+      this.taskservice.callForClickEvent(type);
+    }
+  }
+
+  callEvent(value) {
+    if(value === 'reset')
+    {
+      (<HTMLInputElement>document.getElementById('search')).value = '';
+    }
   }
 
   /**
@@ -177,7 +194,7 @@ export class CreatenewtaskComponent implements OnInit {
         this.successMessage = false;
       }, 7000);
       $('#createnewTaskModal').modal("hide");
-      this.callClickEvent('assignTask');
+      this.callClickEvent('assignTask','');
     },
       (error) => {
         this.AlertMessage = "Some error occurred."
@@ -190,14 +207,34 @@ export class CreatenewtaskComponent implements OnInit {
       })
   }
 
+  /**
+  * @name selectTaskId
+  * @desc select TaskId
+  * @param taskid value
+  * @returns {void}
+  */
+
   selectTaskId(value) {
     this.selectedTaskId = value;
   }
+
+  /**
+  * @name selectUser
+  * @desc select username
+  * @param user name and user id
+  * @returns {void}
+  */
 
   selectUser(value, value1) {
     this.selectedUser = value;
     this.selectedUserId = value1;
   }
+
+  /**
+  * @name toasterClose
+  * @desc close toaster message
+  * @returns {void}
+  */
 
   toasterClose() {
     this.successMessage = false;
