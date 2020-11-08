@@ -11,6 +11,7 @@ export class TaskService {
   apiBaseUrl = "https://devza.com/tests/tasks";
   invokeClickAction: Subject<any> = new Subject();
   getTaskIds=[];
+  totalTasks: number;
 
   constructor(private http:HttpClient) { }
 
@@ -89,18 +90,3 @@ export class TaskService {
        })
      })
    }
-
-   /**
-   * @name delete task
-   * @desc api for deleting tasks
-   * @returns {Observable}
-   */
-
-   listOfUsers() {
-     return this.http.get(this.apiBaseUrl + "/users" , {
-      headers: new HttpHeaders({
-        'AuthToken': 'MMPIUq9bM8zRUFDWzc7XMMGt8jix38q9'
-      })
-     })
-   }
-}
