@@ -8,8 +8,27 @@
 
 <div class="myw-navbar phx-font-family">
     <div class="myw-inner myw-container d-flex flex-wrap myw-navbar-wrap">
+        <div class="d-flex flex-nowrap align-items-center myw-navbar-wrap">
+            <div class="myw-navbar-inner">
+                <nav class="nav myw-nav">
+                    <span class="nav-item nav-link phx-heading-title active phx-mngAlign">
+                        Total Number of Tasks ({{taskservice.totalTasks}})
+                    </span>
+                </nav>
+            </div>
+        </div>
         <div class="d-flex flex-nowrap justify-content-end myw-navbar-actions">
-            <div class="dropdown dropright dropflat phx-cursor d-flex">
+            <div class="myw-navbar-action myw-navbar-search my-wizard-search" placement="bottom" ngbTooltip="Search">
+                <input type="text" class="form-control form-control-sm" id='search'
+                    (input)="callClickEvent('search',$event.target.value)" placeholder="Search..." />
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5Ljk0NSIgaGVpZ2h0PSI5Ljk0MyIgdmlld0JveD0iMCAwIDkuOTQ1IDkuOTQzIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4wMjYgLTAuMDI5KSI+PHBhdGggZD0iTTYuMTUxLDQuOTcxLDkuNywxLjQxOUEuODMyLjgzMiwwLDEsMCw4LjUyNi4yNDJMNC45NzQsMy43OTQsMS40MjIuMjQyQS44MzIuODMyLDAsMSwwLC4yNDUsMS40MTlMMy44LDQuOTcxLjI0NSw4LjUyM0EuODMyLjgzMiwwLDAsMCwxLjQyMiw5LjdMNC45NzQsNi4xNDgsOC41MjYsOS43QS44MzIuODMyLDAsMCwwLDkuNyw4LjUyM1oiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDI2IDAuMDI5KSIvPjwvZz48L3N2Zz4=" draggable="false" alt="Close" />
+            </div>
+            <a class="myw-navbar-action myw-navbar-action-toggle phx-cursor collapsed phx-resetClick" placement="bottom"
+                (click)="callClickEvent('reset',''); callEvent('reset')" ngbTooltip="Click to reset the table">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNi4wNTUiIGhlaWdodD0iMTYuMDY1IiB2aWV3Qm94PSIwIDAgMTYuMDU1IDE2LjA2NSI+PHBhdGggZD0iTTE5LjcxMSw4LjM2QTguMDM0LDguMDM0LDAsMSwwLDIxLjgsMTYuMDQxSDE5LjcxMWE2LjAyMiw2LjAyMiwwLDEsMS01LjY3My04LjAzM0E1LjkzOSw1LjkzOSwwLDAsMSwxOC4yNzUsOS44bC0zLjIzMywzLjIzM0gyMi4wN1Y2WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYuMDE1IC02KSIvPjwvc3ZnPg==" draggable="false" alt="Reset" />
+                <span>Reset</span>
+            </a>
+            <div class="dropdown dropright dropflat phx-cursor d-flex" placement="bottom" ngbTooltip="Create New Task">
                 <a class="myw-navbar-action">
                     <img class="createtaskicon" (click)="openPopup()"
                         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDE4IDE4Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojMDgwODA4O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2Utd2lkdGg6MnB4O308L3N0eWxlPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNi41IC02LjUpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTE4LDcuNXYxNiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTIuNSkiLz48cGF0aCBjbGFzcz0iYSIgZD0iTTcuNSwxOGgxNiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtMi41KSIvPjwvZz48L3N2Zz4="
@@ -19,7 +38,7 @@
                     </span>
                 </a>
             </div>
-            <div class="dropdown dropright dropflat d-flex phx-cursor">
+            <div class="dropdown dropright dropflat d-flex phx-cursor" placement="bottom" ngbTooltip="Assign Task">
                 <a class="myw-navbar-action" (click)="openAssignTaskPopUp()">
                     <img class="assign-icon"
                         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy41MDEiIGhlaWdodD0iMTcuNSIgdmlld0JveD0iMCAwIDE3LjUwMSAxNy41Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO30uYSwuYntzdHJva2U6IzA4MDgwODtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLXdpZHRoOjEuNXB4O30uYntmaWxsOiNmZmY7fTwvc3R5bGU+PC9kZWZzPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKC00NjYuMjUgLTEzMTkuMjUpIj48cGF0aCBjbGFzcz0iYSIgZD0iTTUuODMzLDQuNWg5LjMzNEExLjQ0NSwxLjQ0NSwwLDAsMSwxNi41LDYuMDM2djEwLjc1YTEuNDQ1LDEuNDQ1LDAsMCwxLTEuMzMzLDEuNTM2SDUuODMzQTEuNDQ1LDEuNDQ1LDAsMCwxLDQuNSwxNi43ODZWNi4wMzZBMS40NDUsMS40NDUsMCwwLDEsNS44MzMsNC41WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDY2LjUgMTMxNy42NzkpIi8+PHBhdGggY2xhc3M9ImIiIGQ9Ik01Ljk4OCw0LjVIMTYuNGExLjUsMS41LDAsMCwxLDEuNDg4LDEuNTE4VjE2LjY0NEExLjUsMS41LDAsMCwxLDE2LjQsMTguMTYySDUuOTg4QTEuNSwxLjUsMCwwLDEsNC41LDE2LjY0NFY2LjAxOEExLjUsMS41LDAsMCwxLDUuOTg4LDQuNVoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ2Mi41IDEzMTUuNSkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTQuNSwxMy41aDUuNzU5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NjYuNSAxMzExLjIwOCkiLz48cGF0aCBjbGFzcz0iYiIgZD0iTTQuNSwxMy41aDYuOTQyIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NjUuNSAxMzE1LjU1NSkiLz48L2c+PC9zdmc+" alt="Bulk Update" draggable="false">
