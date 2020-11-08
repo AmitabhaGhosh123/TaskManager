@@ -12,6 +12,7 @@ export class DetailsviewComponent implements OnInit {
 
   totalDatafiltered = {};
   totalDataFilteredCopy = [];
+  totalDataFilteredCopy1 = [];
   filteredObject = {
     id: '',
     message: '',
@@ -46,6 +47,7 @@ export class DetailsviewComponent implements OnInit {
   { "Text": "20", "Value": "20" },
   { "Text": "30", "Value": "30" },
   { "Text": "All", "Value": "All" }];
+  noTaskMessage: boolean = false;
   constructor(public taskservice: TaskService, private spinner: NgxSpinnerService) {
 
   }
@@ -60,15 +62,68 @@ export class DetailsviewComponent implements OnInit {
     this.getClickEventCall();
   }
 
-
+  /**
+   * @name getClickEventCall
+   * @desc method for click event
+   * @returns {Observable}
+   */
   getClickEventCall() {
     this.taskservice.invokeClickAction.subscribe(value => {
-      if (value === 'openDetailsView' || value === 'assignTask') {
-        this.fetchAllTasks();
+      if(value.name) {
+        if(value.name === 'search')
+        {
+          this.search(value.event);
+        }
+      }
+      else
+      {
+        if (value === 'openDetailsView' || value === 'assignTask') {
+          this.fetchAllTasks();
+        }
+        if (value === 'reset') {
+          this.reset();
+        }
       }
     })
   }
 
+  /**
+   * @name reset
+   * @desc reset data
+   * @returns {void}
+   */
+  reset() {
+    this.totalDataFilteredCopy = this.totalDataFilteredCopy1;
+    this.datalength = this.totalDataFilteredCopy.length;
+    this.taskservice.totalTasks = this.datalength;
+    this.page = 1;
+    this.pageSize = 5;
+    this.selectPage['Text'] = "Select";
+    this.selectedFieldForShowRecords = 5;
+  }
+
+  /**
+   * @name search
+   * @desc search method
+   * @param a search string
+   * @returns {Observable}
+   */
+
+  search(a) {
+    if(a)
+    {
+      if (this.totalDataFilteredCopy.some((b) => String(b['id'] != null && b['id'].toLowerCase().includes(a.toLowerCase())) || (b['message'] != null && b['message'].toLowerCase().includes(a.toLowerCase())))) {
+          this.totalDataFilteredCopy = this.totalDataFilteredCopy.filter((b) => {
+             return (b['id'] != null && b['id'].toLowerCase().includes(a.toLowerCase())) || (b['message'] != null && b['message'].toLowerCase().includes(a.toLowerCase()));
+            })
+          this.datalength = this.totalDataFilteredCopy.length;
+          this.taskservice.totalTasks = this.datalength;
+          this.page = 1;
+          this.selectPage['Text'] = "Select";
+
+    }
+   }
+  }
 
   /**
    * @name fetchAllTasks
@@ -82,7 +137,17 @@ export class DetailsviewComponent implements OnInit {
       this.totalDatafiltered = res;
       this.spinner.hide('spinner1');
       this.totalDataFilteredCopy = this.totalDatafiltered['tasks'];
+      if(this.totalDataFilteredCopy.length == 0)
+      {
+        this.AlertMessage = "No pending tasks available";
+        this.noTaskMessage = true;
+        setTimeout(() => {
+          this.noTaskMessage = false;
+        }, 7000);
+      }
+      this.totalDataFilteredCopy1 = this.totalDataFilteredCopy;
       this.datalength = this.totalDataFilteredCopy.length;
+      this.taskservice.totalTasks = this.datalength;
       sessionStorage.setItem("Tasks", JSON.stringify(this.totalDataFilteredCopy));
       this.totalDataFilteredCopy.forEach(value => {
         this.taskservice.getTaskIds.push(value['id']);
@@ -347,6 +412,7 @@ export class DetailsviewComponent implements OnInit {
   toasterClose() {
     this.successMessage = false;
     this.failureMessage = false;
+    this.noTaskMessage = false;
   }
 
   /**
@@ -367,5 +433,4 @@ export class DetailsviewComponent implements OnInit {
       this.page = 1
     }
   }
-
 }
