@@ -414,7 +414,7 @@ a {
     border-radius: 0 !important;
 }
 
-.phx-alert-success button.close span, .phx-alert-danger button.close span {
+.phx-alert-success button.close span, .phx-alert-danger button.close, .phx-alert-notask button.close span {
     color: #ffffff;
     font-size: 21px;
     position: absolute;
@@ -424,12 +424,12 @@ a {
     text-shadow: 0 0px 0 #ffffff;
 }
 
-.phx-alert-success button.close, .phx-alert-danger button.close {
+.phx-alert-success button.close, .phx-alert-danger, .phx-alert-notask button.close {
     opacity: 1 !important;
     outline: none !important;
 }
 
-.phx-alert-success span:focus, .phx-alert-danger span:focus {
+.phx-alert-success span:focus, .phx-alert-danger span:focus, .phx-alert-notask span:focus {
     outline: none !important;
 }
 
@@ -508,6 +508,37 @@ a {
 }
 
 ::ng-deep .page-link {
-    height: 2rem;
+    height: 1.955rem;
 }
 
+::ng-deep .page-item.active .page-link {
+    color: #252525 !important;
+    background-color: #ccc !important;
+    border-color: #ffffff !important;
+}
+
+::ng-deep .page-link:focus {
+    box-shadow: none !important;
+}
+
+::ng-deep .page-link {
+    border: 1px solid #a5a6aa !important;
+    line-height: 0.75rem !important;
+}
+
+.phx-alert-notask {
+    top: 40px;
+    position: absolute;
+    left: 58rem;
+    color: #fff;
+    z-index: 9999;
+    min-width: 18rem;
+    width: 347px;
+    min-height: 45px;
+    background: #0097E6 0% 0% no-repeat padding-box;
+    border: 1px solid #0097E6;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    font: normal normal 600 11px/16px Graphik;
+    border-radius: 0 !important;
+}
