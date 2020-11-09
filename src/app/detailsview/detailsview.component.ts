@@ -149,9 +149,16 @@ export class DetailsviewComponent implements OnInit {
       this.datalength = this.totalDataFilteredCopy.length;
       this.taskservice.totalTasks = this.datalength;
       sessionStorage.setItem("Tasks", JSON.stringify(this.totalDataFilteredCopy));
-      this.totalDataFilteredCopy.forEach(value => {
-        this.taskservice.getTaskIds.push(value['id']);
-      });
+      if(this.totalDataFilteredCopy.length != 0)
+      {
+        this.totalDataFilteredCopy.forEach(value => {
+          this.taskservice.getTaskIds.push(value['id']);
+        });
+      }
+      else
+      {
+        this.taskservice.getTaskIds = [];
+      }
       this.page = 1;
       this.selectPage['Text'] = "Select";
     },
@@ -260,6 +267,7 @@ export class DetailsviewComponent implements OnInit {
     this.taskservice.deleteTask(this.deleteTasks).subscribe(res => {
       if (res['status'] == "success") {
         this.AlertMessage = "Task deleted successfully."
+        this.deleteTasks = [];
         this.successMessage = true;
         window.scroll(0, -300);
         setTimeout(() => {
@@ -433,4 +441,5 @@ export class DetailsviewComponent implements OnInit {
       this.page = 1
     }
   }
+
 }
