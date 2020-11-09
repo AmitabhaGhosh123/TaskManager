@@ -696,18 +696,3 @@
 .myw-navbar-active .myw-navbar-action-toggle:not(.collapsed):before {
 	top: 35%;
 }
-
-::ng-deep .custom-tooltip .tooltip-inner {
-	background: #000 0% 0% no-repeat padding-box;
-	box-shadow: 0px 4px 6px #00000029;
-	opacity: 1;
-	height: 34px;
-	min-width: 150px;
-	font-size: 12px;
-	line-height: 25px;
-	max-width: 250px;
-}
-
-::ng-deep .bs-tooltip-auto .arrow::before, ::ng-deep .bs-tooltip-bottom .arrow::before {
-	border-bottom-color: #000;
-}
