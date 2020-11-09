@@ -114,7 +114,8 @@
                         </div>
 
                         <div class="row">
-                            <input type="submit" class="btn ml-auto btn-primary" value="Create"
+                            <input type="button" class="btn btn-secondary" value="Reset" (click)="resetForm()">
+                            <input type="submit" class="btn ml-2 btn-primary" value="Create"
                                 [disabled]="checkMandatoryVal()">
                         </div>
                     </div>
