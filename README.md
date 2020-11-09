@@ -22,7 +22,7 @@ has to fill the required fields and click on "Create Task" button.
 
 Note : In the create form , the "Message" field is mandatory. Other fields are optional.
 
-After creation of task , user will get a confirmation message on the right corner indicating the task has been created successfully.
+After creation of task , user will get a confirmation message on the right corner indicating the task has been created successfully. User can click on Reset button next to create button for clearing the form field values.
 Also , user will be able to see the details of task created in a table.
 
 
