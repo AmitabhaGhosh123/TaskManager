@@ -79,9 +79,8 @@ export class CreatenewtaskComponent implements OnInit {
   */
 
   createTask() {
-    this.createNewTask.push(this.createnewTaskForm.value);
     this.spinner.show('spinner1');
-    this.taskservice.createTask(this.createNewTask).subscribe(resp => {
+    this.taskservice.createTask(this.createnewTaskForm.value).subscribe(resp => {
       if (resp['status'] == "success") {
         this.AlertMessage = "Task created successfully."
         this.successMessage = true;
@@ -239,6 +238,16 @@ export class CreatenewtaskComponent implements OnInit {
   toasterClose() {
     this.successMessage = false;
     this.failureMessage = false;
+  }
+
+  /**
+  * @name resetForm
+  * @desc reset create new task form
+  * @returns {void}
+  */
+
+  resetForm() {
+    this.createnewTaskForm.reset();
   }
 
 }
